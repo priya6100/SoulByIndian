@@ -1,0 +1,160 @@
+/** @format */
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+body {
+  background-color: white;
+}
+.flexRow {
+  display: flex;
+}
+.sb {
+  justify-content: space-between;
+}
+.appMainHeading h2 {
+  text-align: center;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 24px;
+  padding-bottom: 20px;
+}
+
+.sortingFiltering {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ddd;
+  margin: 10px 0 0;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 0;
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: row;
+  transform-origin: top;
+  height: 100vh;
+  animation: upDownArival ease-in 0.5s;
+}
+.productSection {
+  overflow-y: auto;
+}
+
+.filterSection::-webkit-scrollbar {
+  display: none;
+}
+.productSection::-webkit-scrollbar {
+  width: 5px;
+}
+.productSection::-webkit-scrollbar-thumb {
+  background-color: #cb6380;
+}
+
+#sizeSorting {
+  display: inline-block;
+  width: 200px;
+  margin-left: 20px;
+  transition: all 0.3s ease-in-out;
+}
+#sizeSorting button,
+#viewSorting button {
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+#sortByBtn {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button .downArrow {
+  margin-left: 10px;
+}
+#sizeSorting button:hover,
+#viewSorting button:hover {
+  background-color: #eee;
+  transition: all 0.3s ease-in-out;
+}
+.optionList ul {
+  position: absolute;
+  top: 102%;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  border: 2px solid #ddd;
+  padding: 10px 0;
+  display: none;
+}
+.optionList li {
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.optionList li:hover {
+  background-color: #eee;
+  transition: all 0.3s ease-in-out;
+}
+#sizeSorting .optionList.active ul,
+#viewSorting .optionList.active ul {
+  display: block;
+}
+
+.filterBar {
+  background-color: #f2f3f7;
+  width: 40%;
+}
+
+.filterBar ul {
+  padding: 0;
+}
+
+.ProductsContainer {
+  border-bottom: 1px solid #ddd;
+  overscroll-behavior: smooth;
+}
+
+@media screen and (min-width: 769px) {
+  .ProductsContainer {
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: smooth;
+  }
+
+  .show-md {
+    display: initial;
+  }
+
+  .sortingFiltering.show-md,
+  .sortingFiltering,
+  .sortingFiltering.show-md {
+    display: flex;
+  }
+
+  .show-small {
+    display: none;
+  }
+
+  .productSection {
+    position: sticky;
+    height: 100%;
+    top: 10px;
+    overflow-y: auto;
+  }
+}
+
+@keyframes upDownArival {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 400px;
+  }
+}

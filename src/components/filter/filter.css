@@ -1,0 +1,266 @@
+/** @format */
+
+.box {
+  padding: 20px;
+  padding-left: 0;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  height: 100%;
+}
+
+.box ul {
+  padding: 0;
+}
+
+.noScrollStyle::-webkit-scrollbar-thumb {
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+.noScrollStyle::-webkit-scrollbar {
+  height: 3px;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.filterTitle {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+}
+.filterTitle p {
+  margin-right: 5px;
+}
+.filterSearch {
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: #eee;
+  margin-right: 10px;
+}
+
+.filterSearch .searchIcon {
+  padding: 5px 7px;
+  color: #aaa;
+  pointer-events: none;
+  user-select: none;
+  border-radius: 50px;
+}
+
+.filterSearch input {
+  display: none;
+  width: 80%;
+  border: none;
+  background-color: transparent;
+  padding-left: 5px;
+  outline: none;
+}
+.filterSearch input.active {
+  display: initial;
+}
+
+.filterContainer {
+  width: 60%;
+}
+
+.filterContainer .checkbox {
+  transform: scale(0.9);
+}
+
+.filterContainer .box {
+  padding: 1rem;
+}
+
+.filterContainer ul {
+  list-style: none;
+}
+
+.filterContainer li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.filterContainer li label {
+  transform: scale(0.5);
+  white-space: nowrap;
+  position: static;
+  margin: 0;
+  z-index: 0;
+}
+
+.PrivateSwitchBase-root-1 {
+  padding: 2px 0 !important;
+  margin-right: 10px !important;
+}
+.MuiFormControlLabel-root {
+  margin-left: 0 !important;
+}
+
+.colorFilterList {
+  text-transform: capitalize;
+}
+.colorView {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 50px;
+  margin-right: 10px;
+  box-shadow: 0 0 0 2px #eee;
+}
+.qty {
+  margin-left: 5px;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.sortingFilteringMobile {
+  position: sticky;
+  bottom: 0;
+  background-color: #fff;
+}
+
+.gridSorting {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  position: relative;
+}
+.gridSorting .sort {
+  border-right: 1px solid #ddd;
+}
+.gridSorting button {
+  outline: none;
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+  background-color: transparent;
+  border: none;
+}
+
+.sortingList {
+  padding: 10px;
+}
+.sortingList strong {
+  display: block;
+  width: 100%;
+  text-align: start;
+  padding: 10px 5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+.sortingList,
+.filterListDeck {
+  position: absolute;
+  bottom: 100%;
+  background-color: #fff;
+  width: 100%;
+  left: 0;
+  display: none;
+  border-bottom: 1px solid #ddd;
+}
+.sortingList.active,
+.filterListDeck.active {
+  display: block;
+}
+
+.sortingSec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gridSorting li {
+  padding: 10px 0 10px 10px;
+}
+.gridSorting li:hover,
+.gridSorting button:hover {
+  background-color: #eee;
+}
+.gridSorting button:active {
+  background-color: #000;
+  color: #fff;
+}
+
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom: 1px solid #eee;
+}
+.filterGrid button {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.filterList {
+  display: flex;
+  justify-content: space-between;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.filterBarList {
+  list-style: none;
+  padding: 1rem 0;
+  padding-left: 40%;
+}
+
+.filterBarSelect {
+  color: black;
+  margin: 0;
+  font-weight: 400;
+  transform: translateX(-50%);
+}
+
+.flat {
+  color: #ff3e6c;
+}
+
+.filterBy {
+  overflow-y: auto;
+}
+.filterBy::-webkit-scrollbar {
+  display: none;
+}
+.filterBy li {
+  background-color: #eee;
+  padding: 15px 10px;
+  border-bottom: 1px solid #ddd;
+}
+.filterBy li.active {
+  background-color: #fff;
+  padding: 15px 10px;
+}
+
+.filterSubList {
+  width: 50%;
+}
+.filterSubList input[type="checkbox"] {
+  display: none;
+}
+.filterSubList li {
+  padding: 10px;
+  padding-left: 0;
+}
+.filterSubList li input[type="checkbox"] + label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+label .checkIcon {
+  color: #ddd;
+}
+.filterSubList li.active .checkIcon,
+.filterSubList li input[type="checkbox"]:checked + label .checkIcon {
+  color: #ff3e6c;
+}

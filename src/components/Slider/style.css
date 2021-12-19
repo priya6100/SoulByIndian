@@ -1,0 +1,5 @@
+/** @format */
+
+.slide-smooth {
+  transition: all ease-in-out 1s !important;
+}

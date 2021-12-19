@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+/* .card {
+    text-align: center;
+    box-shadow: 0 0 3px 1px rgba(189, 179, 179, 0.4);
+    border-radius: 5px;
+    margin: 0 auto 10px;
+    width: 47%;
+    position: relative;
+    /* overflow: hidden; */
+    /* transition: all 0.5s ease; */
+ */
+.card-head {
+    height: 150px;
+    margin: 0 0 20px;
+}
+.card-head > img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.productDeck .card:nth-of-type(2n+2) {
+    display: none;
+}
+.productDeck .card:hover {
+    box-shadow: 0 2px 15px rgba(189, 179, 179, 0.5);
+    transform: scale(1);
+    transition: all 0.5s ease;
+}
+.card-body h3,
+.paper-body h3 {
+    color: #ff077b;
+    margin: 10px;
+    font-weight: 400;
+}
+.paper-body h3 {
+    margin: 0;
+}
+.card-body p {
+    margin: 0 0 10px;
+    font-size: small;
+}
+
+.addToCartBtn {
+    outline: none;
+    border: none;
+    border-radius: 0;
+    background-color: #cb8360;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px;
+    width: calc(100% - 10px);
+    margin: 5px auto 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.addToCartBtn:hover {
+    background-color: #ce7244;
+    color: #fff;
+}
+.addToCartBtn:active {
+    background-color: rgb(44, 39, 39);
+    color: #fff;
+}
+.discount {
+    color: #bbb;
+}
+.favItem {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    /* background-color: #fff; */
+    padding: 3px;
+    border-radius: 50px;
+    font-size: 1rem;
+    overflow: hidden;
+}
+.favItem input {
+    display: none;
+}
+.favItem label i {
+    /* -webkit-text-stroke: 2px #ff077b;
+    color: transparent; */
+    color: #aaa;
+    padding: 5px;
+    transition: all 0.3s ease;
+}
+.favItem input:checked + label i {
+    color: #ff077b;
+    /* animation: favAnim 2s linear infinite; */
+    transition: all 0.3s ease;
+}
+@keyframes favAnim {
+    from {
+        filter: drop-shadow(0 0 0 #f8127df1);
+    }
+    to {
+        filter: drop-shadow(0 0 20px #da0a6bf8);
+    }
+}
+
+.d-grid {
+    display: grid;
+    width: 100%;
+}
+
+.productImage .bigImg > img {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
+.productImage .nextItems .card {
+    width: 100%;
+}
+.productImage .sameProducts {
+    grid-column: 1/-1;
+}
+
+.paper {
+    text-align: center;
+    box-shadow: 0 0 0 1px rgba(189, 179, 179, 0.3);
+    padding: 5px;
+    margin: 15px auto;
+    width: 35%;
+}
+.paper:nth-of-type(3n){
+    display: none;
+}
+
+.show-medium {display: none;}
+
+.pagination {grid-column: 1/-1;}
+.paginationDeck {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.paginationDeck .pgBtn {
+    background-color: transparent;
+    box-shadow: 0 0 0 1px #ddd;
+    border: none;
+    display: inline-grid;
+    place-items: center;
+    margin-right: 15px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.7rem;
+}
+.paginationDeck .pgBtn:hover {
+    background-color: #ddd;
+}
+.paginationDeck .pgBtn.active,
+.paginationDeck .pgBtn.active:hover,
+.paginationDeck .pgBtn:active {
+    background-color: royalblue;
+    color: #fff;
+    box-shadow: 0 0 0 1px royalblue;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .row {
+        margin: 0 0 ;
+    }
+    .paperDeck {
+        margin-bottom: 0;
+    }
+    
+    .col-sm-2 {
+        grid-template-columns: 1fr minmax(230px, auto);
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .card {
+        width: 31%;
+        margin: 15px 0;
+    }
+    .cartContainer .card{ width: calc(100% - 20px);}
+    /* .card-head {
+        height: 250px;
+    } */
+
+    .addToCartBtn {
+        width: calc(100% - 40px);
+    }
+    .favItem {
+        font-size: 1.4rem;
+    }
+
+    .productImage .bigImg img {
+        object-fit: contain;
+    }
+    
+    .productDeck .card:nth-of-type(2n+2) {
+        display: block;
+    }
+    
+    .paper {
+        width: 20%;
+        margin: 5px 0;
+    }
+    .paper:nth-of-type(3n){
+        display: initial;
+    }
+    
+    
+    .card-body p {
+        font-size: medium;
+    }
+    .productImage .bigImg {
+        max-height: 600px;
+    }
+    
+    .show-medium {display: initial;}
+}
+
+@media screen and (min-width: 992px) {
+    .card {
+        width: 22%;
+    }
+}

@@ -1,0 +1,264 @@
+/** @format */
+
+.productDescriptionContainer {
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 80px 100px;
+}
+.productDetAdj {
+  padding: 20px 80px;
+}
+.verticalImageStack {
+  width: 67px;
+  display: flex;
+  flex-direction: column;
+}
+.thumbnail {
+  width: 63px;
+  height: 63px;
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+  text-align: center;
+}
+.thumbnail img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.thumbnail.active {
+  border: 2px solid #2874f0;
+}
+
+.productDescriptionContainer .productContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: auto;
+}
+.productDescContainer {
+  width: 485px;
+}
+.productDescImgContainer {
+  width: 485px;
+  height: 440px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid #f0f0f0;
+}
+.productDescImgContainer > img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.breed ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.breed ul li {
+  list-style: none;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+.breed ul li a {
+  text-decoration: none;
+  color: #777;
+  display: inline-block;
+  font-size: 12px;
+  margin: 0 10px;
+}
+.productDetails {
+  margin: 0 10px;
+}
+.productDetails .productTitle {
+  font-size: 18px;
+  color: #212121;
+  font-weight: 400;
+}
+.ratingCount {
+  display: inline-block;
+  background: #388e3c;
+  color: #fff;
+  font-weight: 400;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 2px 5px;
+}
+.ratingNumbersReviews {
+  font-size: 12px;
+  color: #777;
+  font-weight: 600;
+  display: inline-block;
+  margin: 0 10px;
+}
+.extraOffer,
+.discount {
+  color: #388e3c;
+  font-size: 12px;
+  margin: 10px 0px;
+  font-weight: 600;
+}
+.priceContainer {
+  align-items: center;
+}
+.price {
+  font-size: 28px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.flexRowPr {
+  display: block;
+  width: 400px;
+  height: 500px;
+}
+.prButtonContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  column-gap: 20px;
+}
+/* .prnewCar{
+    width: 400px;
+} */
+
+.pSize p {
+  float: left;
+  margin: 0;
+}
+.pSize p::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.pSize .sizeBtn {
+  border: 1px solid #ddd;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 50px;
+  background-color: transparent;
+  transition: all 0.5s ease;
+  margin: 5px;
+  line-height: 40px;
+  padding: 0;
+}
+
+.pSize .size-radio {
+  position: static;
+  right: 0px;
+  bottom: 0px;
+  border: 1px solid #ddd;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 50px;
+  background-color: transparent;
+  transition: all 0.5s ease;
+  line-height: 0px;
+  margin: 0 5px;
+  cursor: pointer;
+  z-index: 0;
+  font-size: 12px;
+}
+
+.pSize .color-radio {
+  position: static;
+  right: 0px;
+  bottom: 0px;
+  border: 1px solid #ddd;
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 2px;
+  line-height: 0px;
+  margin: 0 5px;
+  cursor: pointer;
+  z-index: 0;
+  font-size: 12px;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.pSize .color-radio:hover,
+.pSize .size-radio:hover {
+  background-color: royalblue;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.pSize .radio-input:checked + .color-radio,
+.pSize .radio-input:checked + .size-radio {
+  background-color: #212121;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+.pSize .btnGroup {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0;
+}
+.psize .btnGroup {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  border-radius: 10px;
+}
+@media (max-width: 565px) {
+  .flexRowPr {
+    /* display: none; */
+    width: 100% !important;
+  }
+  /* .prnewCar{
+        width: 80%;
+    } */
+
+  .productDescriptionContainer {
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 80px 0px;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .productDescriptionContainer .productContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+  .productDescriptionContainer .carousel-slider {
+    height: 400px;
+  }
+  .productDescriptionContainer .carousel-slider img {
+    height: auto;
+    object-fit: contain;
+  }
+  .prButtonContainer {
+    display: flex;
+    /* flex-direction: column; */
+    column-gap: 10px;
+  }
+  .productDetAdj {
+    padding: 0px 0px;
+  }
+}
