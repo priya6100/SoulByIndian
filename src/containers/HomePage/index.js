@@ -27,7 +27,7 @@ import Slider from '../../components/Slider';
 
 import {Link} from 'react-router-dom';
 import NewArrivalCarousel from './Carousel';
-import ChatBot from '../../components/Headers/ChatBot';
+// import ChatBot from '../../components/Headers/ChatBot';
 /**
 * @author
 * @function HomePage
@@ -115,7 +115,7 @@ const HomePage = (props) => {
   }
 </div>
 
-<ChatBot/>
+{/* <ChatBot/> */}
 
 <br /> <br /> <br /> <br />
 <div className="headding-all">
