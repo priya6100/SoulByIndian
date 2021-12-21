@@ -27,7 +27,7 @@ function Login(props) {
   const onLoginSuccess = (res) => {
     axios({
       method: "POST",
-      url: "http://localhost:7000/api/googlelogin",
+      url: "http://13.233.156.215:7000/api/googlelogin",
       data: { tokenId: res.tokenId, profileInform: res.profileObj },
     }).then((res) => {
       console.log("Google login success", res);
