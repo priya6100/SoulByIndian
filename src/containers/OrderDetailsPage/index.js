@@ -21,8 +21,8 @@ const OrderDetailsPage = (props) => {
   const dispatch = useDispatch();
   const typeRef = useRef("");
   const orderDetails = useSelector((state) => state.user.orderDetails);
-  const user = useSelector((state) => state.user);
   const auth = useSelector((state) => state.auth);
+  const order = useSelector((state) => state.user.orders);
   const onCancleOrder = (orderId, productId) => {
     const payload = {
       orderId,
@@ -32,6 +32,9 @@ const OrderDetailsPage = (props) => {
     dispatch(cancleOrder(payload));
   };
 
+  console.log(order, ">>user");
+  console.log(orderDetails);
+
   useEffect(() => {
     console.log({ props });
     const payload = {
@@ -40,19 +43,11 @@ const OrderDetailsPage = (props) => {
     dispatch(getOrder(payload));
   }, []);
 
-  useEffect(() => {
-    console.log(orderDetails, ">> orderDetails");
-  }, [orderDetails]);
-
-  useEffect(() => {
-    console.log(user.hasItem, ">> hasItem");
-  }, [user.hasItem]);
-
   const cancleItem = useMemo(() => {
     const { cancleOrder } = orderDetails;
     let newCancleItem = cancleOrder ? cancleOrder[0] : {};
-    // console.log(cancleItem);
     return newCancleItem;
+    // console.log(cancleItem);
   }, [orderDetails]);
 
   const formatDate = (date) => {
@@ -101,7 +96,6 @@ const OrderDetailsPage = (props) => {
           </div>
           <div className="delTitle">
             <h6>OrderId: &nbsp; {orderDetails._id}</h6>
-            <h6>PinCode: &nbsp; {orderDetails.pinCode}</h6>
             <h6>Phone number: {orderDetails.address.mobileNumber}</h6>
             <a href="#">View Invoice</a>
             <h6></h6>
@@ -119,6 +113,27 @@ const OrderDetailsPage = (props) => {
               </div>
               <div className="lowerDetRight">
                 <div className="delItemName">{item.productId.name}</div>
+
+                {/* {orderDetails.cancleOrder.map((status) => {
+                  return (
+                    <>
+         
+                      {!status.isCanclled ? (
+                        <>
+                                    <select onChange={(e) => setType(e.target.value)}>
+                                    <option value={""}>select status</option>
+                        <option key={status.type} value={status.type}>
+                          {status.type}
+                        </option>
+                        </select>
+                          <button onClick={() => onCancleOrder(orderDetails._id)}>Cancke</button>
+                          </>
+                      ) : <h1>item cancelled successfully on {status.date}</h1>}
+                      
+                    </>
+                  );
+                })} */}
+
                 <div className="cancleorderItem">
                   {/* <p className="trackShipment">Track Shipment</p> */}
                   {!item.removeOrder[0].isRemoveOrder ? (
@@ -157,8 +172,19 @@ const OrderDetailsPage = (props) => {
                               </div>
                             </div>
                             {oc.type == "shipped" ||
-                            oc.type == "delivered" ||
-                            user.hasItem === false ? null : (
+                            oc.type == "delivered" ? null : (
+                              //  (<>
+                              //    {item.removeOrder[0].isRemoveOrder?('hello'):(
+                              //      <button
+                              //      onClick={() => {
+                              //        typeRef.current = cancleItem.type;
+                              //        onCancleOrder(orderDetails._id, item.productId._id);
+                              //      }}
+                              //    >
+                              //      Cancle Order
+                              //    </button>
+                              //    )}
+                              //  </>)
                               <button
                                 onClick={() => {
                                   typeRef.current = cancleItem.type;
@@ -185,7 +211,6 @@ const OrderDetailsPage = (props) => {
             <div className="delTitle mobBorderOrder">
               <h4>Order Summery</h4>
               <h6>OrderId: &nbsp; {orderDetails._id}</h6>
-              <h6>PinCode: &nbsp; {orderDetails.pinCode}</h6>
               <h6>Phone number: {orderDetails.address.mobileNumber}</h6>
               <h6>
                 Total Amount: &nbsp;

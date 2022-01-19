@@ -64,7 +64,7 @@ const Slider = (props) => {
       items: 4,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 320 },
+      breakpoint: { max: 1024, min: 335 },
       items: 3,
     },
     mobile: {
@@ -83,7 +83,7 @@ const Slider = (props) => {
         draggable={false}
         sliderClass="slide-smooth"
         // className="slide-smooth"
-        showDots={true}
+        showDots={false}
         ssr={true} // means to render carousel on server-side.
         infinite={true}
         autoPlay={false}
@@ -102,9 +102,10 @@ const Slider = (props) => {
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-          }}>
+          }}
+          className="sliderItem"
+        >
           <img
-            style={{ height: "200px", width: "200px", borderRadius: "50%" }}
             src={img1 ? generatePublicUrl(img1.productPictures[0]) : ""}
             alt="First slide"
           />
@@ -115,9 +116,10 @@ const Slider = (props) => {
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-          }}>
+          }}
+          className="sliderItem"
+        >
           <img
-            style={{ height: "200px", width: "200px", borderRadius: "50%" }}
             src={img2 ? generatePublicUrl(img2.productPictures[0]) : ""}
             alt="Second slide"
           />
@@ -128,9 +130,10 @@ const Slider = (props) => {
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-          }}>
+          }}
+          className="sliderItem"
+        >
           <img
-            style={{ height: "200px", width: "200px", borderRadius: "50%" }}
             src={img3 ? generatePublicUrl(img3.productPictures[0]) : ""}
             alt="Thrid slide"
           />
@@ -141,9 +144,10 @@ const Slider = (props) => {
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-          }}>
+          }}
+          className="sliderItem"
+        >
           <img
-            style={{ height: "200px", width: "200px", borderRadius: "50%" }}
             src={img4 ? generatePublicUrl(img4.productPictures[0]) : ""}
             alt="fourth slide"
           />
@@ -154,9 +158,10 @@ const Slider = (props) => {
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-          }}>
+          }}
+          className="sliderItem"
+        >
           <img
-            style={{ height: "200px", width: "200px", borderRadius: "50%" }}
             src={img5 ? generatePublicUrl(img5.productPictures[0]) : ""}
             alt="Fifth slide"
           />

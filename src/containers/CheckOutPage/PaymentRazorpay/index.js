@@ -12,7 +12,7 @@ export class Payment extends Component {
   }
 
   async razorPayPaymentHandler() {
-    const API_URL = `http://13.233.156.215:7000/razorpay/`
+    const API_URL = `http://localhost:5000/razorpay/`
     const orderUrl = `${API_URL}order`;
     const response = await Axios.get(orderUrl);
     const { data } = response;

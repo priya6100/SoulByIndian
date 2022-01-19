@@ -13,19 +13,6 @@
   padding: 0;
 }
 
-.noScrollStyle::-webkit-scrollbar-thumb {
-  height: 2px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 25px;
-}
-
-.noScrollStyle::-webkit-scrollbar {
-  height: 3px;
-  border-radius: 25px;
-  background-color: rgba(0, 0, 0, 0.02);
-}
-
 .filterTitle {
   display: flex;
   width: 100%;
@@ -66,9 +53,9 @@
   display: initial;
 }
 
-.filterContainer {
+/* .filterContainer {
   width: 60%;
-}
+} */
 
 .filterContainer .checkbox {
   transform: scale(0.9);
@@ -89,7 +76,7 @@
 }
 
 .filterContainer li label {
-  transform: scale(0.5);
+  transform: scale(0.8);
   white-space: nowrap;
   position: static;
   margin: 0;
@@ -211,15 +198,15 @@
 
 .filterBarList {
   list-style: none;
-  padding: 1rem 0;
-  padding-left: 40%;
+  padding: 1rem;
+  /* padding-left: 40%; */
 }
 
 .filterBarSelect {
   color: black;
   margin: 0;
   font-weight: 400;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
 }
 
 .flat {

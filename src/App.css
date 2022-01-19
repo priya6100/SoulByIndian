@@ -40,6 +40,12 @@ body {
   height: 100vh;
   animation: upDownArival ease-in 0.5s;
 }
+@media screen and (max-width: 767px) {
+  .filterSection {display: grid; 
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+}
 .productSection {
   overflow-y: auto;
 }
@@ -109,11 +115,13 @@ button .downArrow {
 
 .filterBar {
   background-color: #f2f3f7;
-  width: 40%;
+  width: 100%;
 }
 
 .filterBar ul {
   padding: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 .ProductsContainer {

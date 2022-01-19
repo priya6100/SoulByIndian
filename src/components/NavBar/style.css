@@ -179,9 +179,9 @@ min-width: 150px;
 .mobileViewMenu .MuiListItem-root {
   display: block;
 }
-.mobileViewMenu ul {
+/* .mobileViewMenu ul {
   display: none;
-}
+} */
 .mobileViewMenu li:hover ul {
   display: initial;
 }

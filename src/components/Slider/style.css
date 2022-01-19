@@ -3,3 +3,18 @@
 .slide-smooth {
   transition: all ease-in-out 1s !important;
 }
+.sliderItem img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.react-multi-carousel-dot-list {
+  z-index: 2;
+}
+
+@media screen and (max-width: 765px) {
+  .sliderItem img {
+    width: 100px;
+    height: 100px;
+  }
+}

@@ -41,6 +41,7 @@ import {
 // import Cart from "../UI/Cart";
 
 // import { BiUserCircle } from "react-icons/bi";
+import Data from "./myData.json";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -128,7 +129,6 @@ export default function PrimarySearchAppBar(props) {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const auth = useSelector((state) => state.auth);
   const wish = useSelector((state) => state.wishlist);
-  const product = useSelector((state) => state.product);
 
   const userSignup = () => {
     const user = { firstName, lastName, email, password };
@@ -249,6 +249,13 @@ export default function PrimarySearchAppBar(props) {
       </div>
       <hr />
 
+      {/* <MenuItem onClick={handleMenuClose}><Link to="/dressdetail" >Dress Details</Link> </MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link  to="/kids">Kids</Link> </MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link  to="/men">Men Fashion</Link> </MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link  to="/women">Women Fashion</Link> </MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link  to="/accessories">Accesories</Link> </MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link  to="/portfolio">Portfolio</Link> </MenuItem> */}
+
       <ul className="mobileViewMenu">
         {category.categories.length > 0
           ? MobileRenderCategories(category.categories)
@@ -303,14 +310,14 @@ export default function PrimarySearchAppBar(props) {
       <MenuItem onClick={handleMenuClose}>
         New Customer ?{" "}
         <span>
-          <p
+          <a
             onClick={() => {
               setLoginModal(true);
               setSignup(true);
               setAnchorEl(false);
             }}>
             signup
-          </p>
+          </a>
         </span>
       </MenuItem>
       <ul className="mobileViewMenu">
@@ -357,8 +364,6 @@ export default function PrimarySearchAppBar(props) {
   );
 
   const [searchTerm, setSearchTerm] = useState("");
-
-  const [searchReveal, setSearchReveal] = useState(false);
 
   return (
     <div className={classes.grow}>
@@ -412,52 +417,40 @@ export default function PrimarySearchAppBar(props) {
                 }}
                 inputProps={{ "aria-label": "search" }}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                onFocus={() => {
-                  setSearchReveal(true);
-                }}
-                onBlur={() => {
-                  setSearchReveal(false);
-                }}
               />
-              {searchReveal && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "90%",
-                    left: "0",
-                    width: "100%",
-                    backgroundColor: "#fff",
-                    display: {},
-                  }}>
-                  <ul style={{ margin: "0", padding: "0", listStyle: "none" }}>
-                    {product.products
-                      .filter((val) => {
-                        if (searchTerm === "") {
-                          return null;
-                        } else if (
-                          val.name
-                            .toLowerCase()
-                            .includes(searchTerm.toLowerCase())
-                        ) {
-                          return val.name;
-                        }
-                      })
-                      .map((item) => (
-                        <li key={item._id} className="hover:bg-gray-200">
-                          <a
-                            className="pl-3 py-1"
-                            href={`/${item.slug}/${item._id}/p`}
-                            style={{
-                              color: "inherit",
-                              textDecoration: "none",
-                            }}>
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              )}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "90%",
+                  left: "0",
+                  width: "100%",
+                  backgroundColor: "#fff",
+                  // zIndex: '-1'
+                }}>
+                <ul style={{ margin: "0", padding: "0", listStyle: "none" }}>
+                  {Data.product
+                    .filter((val) => {
+                      if (searchTerm === "") {
+                        return null;
+                      } else if (
+                        val.Name.toLowerCase().includes(
+                          searchTerm.toLowerCase()
+                        )
+                      ) {
+                        return val.Name;
+                      }
+                    })
+                    .map((item) => (
+                      <li key={item.id}>
+                        <a
+                          href="/"
+                          style={{ color: "inherit", textDecoration: "none" }}>
+                          {item.Name}
+                        </a>
+                      </li>
+                    ))}
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -508,6 +501,7 @@ export default function PrimarySearchAppBar(props) {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
+      {renderNonLoggedMenu}
       {auth.authenticate ? renderLoggedMenu : renderNonLoggedMenu}
       <Modal visible={loginModal} onClose={() => setLoginModal(false)}>
         <div className="authContainer">
@@ -528,20 +522,20 @@ export default function PrimarySearchAppBar(props) {
                   <div style={{ color: "red", fontSize: 12 }}>{auth.error}</div>
                 )}
                 {signup && (
-                  <>
-                    <MaterialInput
-                      type="text"
-                      label="First Name"
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
-                    />
-                    <MaterialInput
-                      type="text"
-                      label="Last Name"
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
-                    />
-                  </>
+                  <MaterialInput
+                    type="text"
+                    label="First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                )}
+                {signup && (
+                  <MaterialInput
+                    type="text"
+                    label="Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
                 )}
 
                 <MaterialInput
@@ -581,25 +575,32 @@ export default function PrimarySearchAppBar(props) {
                     }
                   />
                 </div>
-                {!signup && (
-                  <div
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    margin: "1rem 0 0 0",
+                  }}>
+                  <a
                     style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      margin: "1rem 0 0 0",
-                    }}>
-                    <a
-                      style={{
-                        fontSize: ".8rem",
-                        fontWeight: "700",
-                        letterSpacing: "1px",
-                        color: "#cb8364",
-                      }}
-                      href="/forgot-password">
-                      Forgot password?
-                    </a>
-                  </div>
-                )}
+                      fontSize: ".8rem",
+                      fontWeight: "700",
+                      letterSpacing: "1px",
+                      color: "#cb8364",
+                    }}
+                    href="/forgot-password">
+                    Forgot password?
+                  </a>
+                </div>
+
+                {/* 
+                                      <GoogleLogin
+                        clientId="800480683042-qdqo4a9hi5dboglr97e4tvmvab0er1lu.apps.googleusercontent.com"
+                        buttonText="Login"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                      />, */}
               </div>
             </div>
           </div>

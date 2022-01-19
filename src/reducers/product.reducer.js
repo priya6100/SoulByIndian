@@ -24,12 +24,6 @@ export default (state = initialState, action) => {
         filteredItems: action.payload.product,
       };
       break;
-    case productConstants.SORTING_PRODUCTS_BY_PRICE:
-      state = {
-        ...state,
-        filteredItems: action.payload.filteredItems,
-        products: action.payload.products,
-      };
     case productConstants.FILTER_PRODUCTS_BY_PRICE:
       state = {
         ...state,

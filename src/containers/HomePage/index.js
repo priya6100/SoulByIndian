@@ -27,7 +27,8 @@ import Slider from '../../components/Slider';
 
 import {Link} from 'react-router-dom';
 import NewArrivalCarousel from './Carousel';
-// import ChatBot from '../../components/Headers/ChatBot';
+import ChatBot from '../../components/Headers/ChatBot';
+import Category from '../../components/Slider/Category';
 /**
 * @author
 * @function HomePage
@@ -94,28 +95,33 @@ const HomePage = (props) => {
 <div className="headding-all">
 <h2>Top Catelogs</h2>
 </div>
-<div className="homeCategoryMain">
+{/* <div className="categorySec">
+  <div className="homeCategoryMain">
 
   {
     category.categories.map(cat => 
       
-   
+  
         <div className="homeCategory">
-         <div>
+        <div>
                 <Link to={`/${cat.name}`}>
                   <img src={cat.categoryImage} alt={cat.categoryImage} />
                 </Link>
                 <h5>{cat.name}</h5>
               
-         </div>
+        </div>
       </div>
-  
+
       
       )
   }
+  </div>
+</div> */}
+
+<div className="categorySec">
+  <Category />
 </div>
 
-{/* <ChatBot/> */}
 
 <br /> <br /> <br /> <br />
 <div className="headding-all">

@@ -368,7 +368,6 @@ const CheckOutPage = (props) => {
             <div className="confirmText">
               <h4>Thanks you for shopping with us, your order is complete!</h4>
               <p>orderId: {orderDetails._id}</p>
-              <p>pinCode: {orderDetails.pinCode}</p>
             </div>
             <div className="confirmButtonContainer">
               <a href="/account/orders">View / Manage Order</a>

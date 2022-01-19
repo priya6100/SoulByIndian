@@ -81,7 +81,7 @@ const Filter = ({ filter, filterState, setFilter }) => {
             break;
         }
 
-        const handleToggle = (id) => {
+        const handleToggle = (id, number) => {
           const currentIndex = checked.indexOf(id);
           const newChecked = [...checked];
 
@@ -112,14 +112,9 @@ const Filter = ({ filter, filterState, setFilter }) => {
                       }}
                       checked={checked.indexOf(_id) === -1 ? false : true}
                     />
-                    <div className="flex justify-start items-center">
-                      <p className="text-xs">
-                        {Name}{" "}
-                        <span className="qty" style={{ fontSize: ".5rem" }}>
-                          ({Qty})
-                        </span>
-                      </p>
-                    </div>
+                    <label htmlFor={_id}>
+                      {Name} <span className="qty">({Qty})</span>
+                    </label>
                   </li>
                 );
               })}

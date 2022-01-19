@@ -498,21 +498,6 @@ export const filterProducts = (filter, product) => async (dispatch) => {
   });
 };
 
-export const sortingProducts = (sorting, product) => async (dispatch) => {
-  const filteredItems = product.filteredItems;
-  sorting === "Price: Low to High"
-    ? filteredItems.sort((a, b) => a.price - b.price)
-    : filteredItems.sort((a, b) => b.price - a.price);
-  console.log(filteredItems);
-  return dispatch({
-    type: productConstants.SORTING_PRODUCTS_BY_PRICE,
-    payload: {
-      filteredItems,
-      products: product.products,
-    },
-  });
-};
-
 export const getProductsBySlug = (slug) => {
   return async (dispatch) => {
     const res = await axios.get(`/products/${slug}`);
