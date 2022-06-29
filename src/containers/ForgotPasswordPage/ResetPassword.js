@@ -27,13 +27,14 @@ const ResetPassword = ({ history }) => {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    console.log(changePassword.status, "status");
-    switch (changePassword.status) {
+    console.log(status, "status");
+    switch (status) {
       case "checking password":
         toast.info(`checking password`);
         break;
       case "checking password success":
         toast.success(`password checked`);
+
         const changePasswordData = {
           changePass,
           confirmPass,
@@ -41,6 +42,7 @@ const ResetPassword = ({ history }) => {
         };
 
         dispatch(changePasswordPage(changePasswordData));
+
         break;
       case "checking password failed":
         toast.error(`wrong password, please enter the correct password`);
@@ -52,6 +54,7 @@ const ResetPassword = ({ history }) => {
         toast.success(`password changing, now redirect to dashboard`);
 
         dispatch(signout());
+
         break;
       case "changing password failed":
         toast.error(`password not match, please enter the same password`);
@@ -65,7 +68,7 @@ const ResetPassword = ({ history }) => {
       default:
         break;
     }
-  }, [changePassword.status]);
+  }, [status]);
 
   const handleSubmitNewPass = (e) => {
     e.preventDefault();

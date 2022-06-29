@@ -4,7 +4,9 @@
   font-family: "Roboto", sans-serif;
 }
 body {
-  background-color: white;
+  background-color: #f2f3f6;
+  margin: 0;
+  padding: 0;
 }
 .flexRow {
   display: flex;
@@ -39,12 +41,6 @@ body {
   transform-origin: top;
   height: 100vh;
   animation: upDownArival ease-in 0.5s;
-}
-@media screen and (max-width: 767px) {
-  .filterSection {display: grid; 
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-  }
 }
 .productSection {
   overflow-y: auto;
@@ -89,6 +85,7 @@ button .downArrow {
   background-color: #eee;
   transition: all 0.3s ease-in-out;
 }
+
 .optionList ul {
   position: absolute;
   top: 102%;
@@ -112,21 +109,89 @@ button .downArrow {
 #viewSorting .optionList.active ul {
   display: block;
 }
-
+#sizeSorting button,
+#viewSorting button {
+  padding: 10px;
+  display: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
 .filterBar {
   background-color: #f2f3f7;
-  width: 100%;
+  width: 40%;
 }
 
 .filterBar ul {
   padding: 0;
-  display: flex;
-  justify-content: space-around;
 }
 
 .ProductsContainer {
   border-bottom: 1px solid #ddd;
   overscroll-behavior: smooth;
+}
+/* @media screen and (min-width: 320px) {
+  .ProductsContainer {
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: smooth;
+  }
+  
+
+  .show-md {
+    display: initial;
+  }
+
+  .sortingFiltering.show-md,
+  .sortingFiltering,
+  .sortingFiltering.show-md {
+    display: flex;
+  }
+
+  .show-small {
+    display: none;
+  }
+
+  .productSection {
+    position: sticky;
+    height: 100%;
+    top: 10px;
+    overflow-y: auto;
+  }
+} */
+@media screen and (min-width: 320px) {
+  .ProductsContainer {
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: smooth;
+  }
+
+  #sizeSorting button:hover,
+  #viewSorting button:hover {
+    background-color: #eee;
+    transition: all 0.3s ease-in-out;
+    display: none;
+  }
+  .show-md {
+    display: initial;
+  }
+
+  .sortingFiltering.show-md,
+  .sortingFiltering,
+  .sortingFiltering.show-md {
+    display: flex;
+  }
+
+  .show-small {
+    display: none;
+  }
+
+  .productSection {
+    position: sticky;
+    height: 100%;
+    top: 10px;
+    overflow-y: auto;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -135,6 +200,7 @@ button .downArrow {
     flex-direction: column;
     overscroll-behavior: smooth;
   }
+
 
   .show-md {
     display: initial;

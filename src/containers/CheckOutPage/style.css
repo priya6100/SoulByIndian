@@ -1,3 +1,46 @@
+/* .App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+ */
+
+
+
 .checkoutContainer{
     width: calc(100% - 400px);
     margin-top: 10px;
@@ -19,7 +62,7 @@
    
 }
 .checkoutHeader.active{
-    background: #cb8364;
+    background: #6b64cb;
     /* border: 1px solid black; */
     border-radius: 5px;
 
@@ -45,9 +88,9 @@
 }
 .stepTitle{
     display: inline-block;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
-    color: #878787;
+    color: #000000;
     margin-left: 15px;
 }
 .checkoutHeader.active .stepTitle{
@@ -88,7 +131,7 @@
     padding: 1px 5px;
     font-size: 10px;
     border-radius: 2px;
-    color: #777777;
+    color: #000000;
 }
 .fullAddress{
     font-size: 12px;
@@ -142,7 +185,7 @@
     padding: 10px;
 }
 .MuiStepIcon-root.MuiStepIcon-active {
-    color: #cb8364 !important;
+    color: hwb(240 8% 36%) !important;
 }
 .MuiStepIcon-root.MuiStepIcon-completed {
     color: #3f51b5;
@@ -205,14 +248,14 @@
 .confirmButtonContainer a{
  
    text-decoration: none;
-    border: 1px solid #cb8364;
+    border: 1px solid #5d39c2;
     padding: 13px 35px;
     margin: 15px;
     background-color: transparent;
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.7s;
-    color: #cb8364;
+    color: #2e04ad;
   
  
 }
@@ -223,12 +266,12 @@
     margin: 10px;
     background-color: transparent;
     border-radius: 25px;
-    background-color: #cb8364;
+    background-color: #2e04ad;
     color: white;
  
 }
 .confirmActive{
-    background-color: #cb8364 !important;
+    background-color: #2e04ad !important;
     color: white !important;
 }
 .confirmActive:hover{
@@ -265,14 +308,14 @@
     .confirmButtonContainer a{
      
        text-decoration: none;
-        border: 1px solid #cb8364;
+        border: 1px solid #2e04ad;
         padding: 8px 15px;
         margin: 10px;
         background-color: transparent;
         border-radius: 25px;
         cursor: pointer;
         transition: all 0.3s;
-        color: #cb8364;
+        color: #2e04ad;
       
      
     }

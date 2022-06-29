@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addAddress } from "../../actions";
-
+import { FaRupeeSign, FaTrashAlt } from "react-icons/fa";
 import { MaterialButton, MaterialInput } from "../../components/MaterialUi";
 
 /**
@@ -101,7 +101,7 @@ useEffect(() => {
 }, [user.address]);
 
 
-const renderAddressForm = () =>
+const renderAddressForm = (props) =>
 {
   return (
     <>
@@ -211,6 +211,13 @@ const renderAddressForm = () =>
               margin: "20px 0",
             }}
           />
+        </div>
+        <div className="flexRow">
+        <button
+              className="cartActionBtn" style={{"color" : "red"}}
+              onClick={(e) => e.removeAddressList(id)}>
+              <FaTrashAlt /> Remove
+            </button>
         </div>
     </>
   );

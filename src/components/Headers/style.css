@@ -52,7 +52,7 @@
 }
 
 .searchInputContainer {
-  width: 560px;
+  width: 360px;
   position: relative;
   background: #fff;
   height: 36px;
@@ -137,7 +137,7 @@
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  background-color: #cb8364;
+  background-color: #ffffff;
 }
 
 .leftspace {
@@ -213,6 +213,8 @@
   cursor: pointer;
   padding: 0 5px;
   font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .menuHeader1 > ul > li > span:hover {
   color: #cb8364 !important;

@@ -6,11 +6,11 @@
   align-items: center;
  
 }
-.MuiMenuItem-root {
+/* .MuiMenuItem-root {
   width: 100% !important;
   overflow: hidden;
   /* padding: 10px 60px !important; */
-  font-size: 1rem !important;
+  /* font-size: 1rem !important;
   box-sizing: border-box;
   min-height: 48px;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -21,7 +21,7 @@
   letter-spacing: 0.00938em !important;
   padding-bottom: 6px;
  
-}
+} */ */
 .MuiMenuItem-root a{
   text-decoration: none !important;
   /* color: black !important; */
@@ -138,7 +138,9 @@ min-width: 150px;
 }
 .loggiedinProfile h5{
   text-align: left;
-  font-size: 16px;
+  font-size: 26px;
+  font-style: italic;
+  font-weight: bold;
 }
 .loggiedinProfile p{
   text-align: left;
@@ -149,9 +151,14 @@ min-width: 150px;
   align-items: flex-start;
   border: 1px solid #cb8364;
   padding: 8px 30px;
-  background-color : transparent;
-  color: #cb8364;
-  /* border-radius: 25px; */
+  background-color : rgb(62, 189, 56);
+  color: #fff;
+ font-weight: bold;
+ border-radius: 10px;
+}
+.loggiedinProfile button:hover{
+  background-color: rgb(50, 216, 186);
+  color: #fff;
 }
 .logosection{
   display: flex;
@@ -179,9 +186,9 @@ min-width: 150px;
 .mobileViewMenu .MuiListItem-root {
   display: block;
 }
-/* .mobileViewMenu ul {
+.mobileViewMenu ul {
   display: none;
-} */
+}
 .mobileViewMenu li:hover ul {
   display: initial;
 }
@@ -192,7 +199,8 @@ min-width: 150px;
   padding-left: 20px;
 }
 
-@media(max-width: 768px)
+
+  @media(max-width: 320px)
 {
   .logosection{
     display: flex;

@@ -112,7 +112,7 @@
 
 .flexRowPr {
   display: block;
-  width: 400px;
+  width: 1900px;
   height: 500px;
 }
 .prButtonContainer {
@@ -128,6 +128,7 @@
 .pSize p {
   float: left;
   margin: 0;
+  font-weight: bold;
 }
 .pSize p::after {
   content: "";
@@ -143,7 +144,7 @@
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  border-radius: 50px;
+  font-weight: bold;
   background-color: transparent;
   transition: all 0.5s ease;
   margin: 5px;
@@ -163,7 +164,7 @@
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  border-radius: 50px;
+  border-radius: 5px;
   background-color: transparent;
   transition: all 0.5s ease;
   line-height: 0px;
@@ -195,7 +196,6 @@
 
 .flex-center {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -208,7 +208,7 @@
 
 .pSize .radio-input:checked + .color-radio,
 .pSize .radio-input:checked + .size-radio {
-  background-color: #212121;
+  background-color: #cb1111;
   color: #fff;
   transition: all 0.5s ease;
 }
@@ -216,7 +216,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
   margin: 20px 0;
 }
 .psize .btnGroup {
@@ -224,7 +223,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
-  border-radius: 10px;
+  
 }
 @media (max-width: 565px) {
   .flexRowPr {
@@ -252,7 +251,9 @@
     height: 400px;
   }
   .productDescriptionContainer .carousel-slider img {
-    height: auto;
+    height: 100%;
+    width: 100px;
+
     object-fit: contain;
   }
   .prButtonContainer {

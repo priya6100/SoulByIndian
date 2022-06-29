@@ -18,6 +18,7 @@ import CartPage from "./containers/CartPage";
 import WishlistPage from "./containers/WishlistPage";
 import PrivateRoute from "./components/PrivateRoute";
 import OrderPage from "./containers/OrderPage";
+import Captcha from "./containers/CaptchaPage";
 import OrderDetailsPage from "./containers/OrderDetailsPage";
 // import Footer from './components/Footer';
 import PortFolio from "./components/Portfolio";
@@ -77,7 +78,7 @@ function App() {
           <Route path="/forgot-password" component={ForgetPassword} />
           <PrivateRoute path="/reset" component={ResetPassword} />
           <Route path="/new-password" component={SignIn} />
-
+          <Route path="/captcha" component={Captcha} />
           <PrivateRoute exact path="/reset-password/:id/:token">
             <Reset />
           </PrivateRoute>

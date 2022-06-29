@@ -125,16 +125,16 @@ const FilterMobileUi = ({ filter, filterState, setFilter }) => {
       </div>
       <div className=" bg-gray-200 w-screen h-14 ">
         <div className="py-3 px-3 md:px-5 sm:px-4 flex items-center justify-between">
-          <div className="text-gray-900 flex items-center">
+          {/* <div className="text-gray-900 flex items-center">
             <span className="text-gray-500"> Check Delivery Info</span>
-          </div>
-          <div
+          </div> */}
+          {/* <div
             className="text-blue-500 cursor-pointer"
             onClick={() => {
               setPinRev(!pinRev);
             }}>
             Enter PinCode
-          </div>
+          </div> */}
         </div>
       </div>
       {filterRev && (
@@ -153,9 +153,9 @@ const FilterMobileUi = ({ filter, filterState, setFilter }) => {
                 <div className="whitespace-nowrap overflow-y-auto noScrollStyle">
                   {child.map((child) => {
                     let classes1 =
-                      "px-2 mr-2 mb-1 py-1 inline-block text-gray-50 rounded text-xs  bg-gray-700";
+                      "px-2 mr-2 mb-1 py-1 text-uppercase font-bold inline-block text-gray-50 rounded text-xs  bg-gray-700";
                     let classes2 =
-                      "px-2 mr-2 mb-1 py-1 inline-block text-gray-50 rounded text-xs  bg-gray-300";
+                      "px-4 mr-4 font-bold text-uppercase mb-1 py-1 inline-block text-gray-500 rounded text-xs  bg-gray-300";
                     const exist =
                       checked.indexOf(child._id) === -1 ? false : true;
                     return (
@@ -176,14 +176,14 @@ const FilterMobileUi = ({ filter, filterState, setFilter }) => {
         </div>
       )}
       {sortRev && (
-        <div className="w-screen h-80 bg-gray-100">
+        <div className="w-screen h-80 bg-blue-100">
           {sortData.map((category) => {
             let classes = "";
             sorted === category
               ? (classes =
-                  "flex justify-center items-center h-1/5 w-full text-lg bg-gray-700")
+                  "flex justify-center text-uppercase font-bold items-center h-1/5 w-full text-lg bg-gray-700")
               : (classes =
-                  "flex justify-center items-center h-1/5 w-full text-lg bg-gray-400");
+                  "flex justify-center text-uppercase font-bold items-center h-1/5 w-full text-lg bg-gray-400");
 
             return (
               <div onClick={() => setSorted(category)} className={classes}>
@@ -205,11 +205,11 @@ const FilterMobileUi = ({ filter, filterState, setFilter }) => {
               <GrClose />
             </div>
             <div className="absolute bottom-0 mb-2">
-              <div className=" text-gray-800 font-bold px-3">
+              {/* <div className=" text-gray-800 font-bold px-3">
                 Use pincode to check delivery info
-              </div>
+              </div> */}
               <div className="flex justify-between items-center w-screen px-3">
-                <input
+                {/* <input
                   placeholder="Enter pincode"
                   value={pin}
                   onChange={(e) => {
@@ -219,7 +219,7 @@ const FilterMobileUi = ({ filter, filterState, setFilter }) => {
                     }
                   }}
                   className="rounded pl-2 border-gray-600 bg-gray-50 outline-none"
-                />
+                /> */}
                 <div
                   className={`rounded ${bg} text-gray-100 px-2 py-1 cursor-pointer`}
                   onClick={() => handleSubmit()}>

@@ -12,6 +12,7 @@ import { IoIosArrowForward, IoIosStar, IoMdCart } from "react-icons/io";
 import { BiRupee } from "react-icons/bi";
 import { AiFillThunderbolt } from "react-icons/ai";
 import "./style.css";
+import NewArrival from '../../components/NewArrival/Carousel';
 // import {addToCart} from '../../actions';
 /**
  * @author
@@ -140,7 +141,7 @@ const ProductDetailsPage = (props) => {
             <p className="productTitle">{product.productDetails.name}</p>
             <div>
               <span className="ratingCount">
-                4.3 <IoIosStar />
+                4.9 <IoIosStar />
               </span>
               <span className="ratingNumbersReviews">
                 72,234 Ratings & 8,140 Reviews
@@ -209,8 +210,9 @@ const ProductDetailsPage = (props) => {
           </div>
         ))}
       </div>
+      
     </Layout>
   );
 };
-
+<NewArrival/>
 export default ProductDetailsPage;

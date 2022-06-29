@@ -6,7 +6,7 @@
 .topCategory{
     width: 100%;
     height: 40px;
-    background-color: #fff;
+    background-color: #fef2f2;
     border-bottom: 1px solid #cccccc;
     box-shadow: 0 2px 2px -2px #333;
 }
@@ -39,7 +39,7 @@
 
 .topCategory > ul > li > ul{
     /* position: absolute; */
-    background: #fff;
+    background: #fef2f2;
     left: 0;
     right: 0;
     /* display: none; */
@@ -115,14 +115,13 @@
   font-size: 14px;
   letter-spacing: 3px;
 }
-
 .homeCategoryMain{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     position: relative;
-    text-align: center;
     top: 70px;
+    text-align: center;
 }
 .homeCategory{
     display: flex;
@@ -256,7 +255,7 @@
 }
 
 .newArr {
-  background-image: url('./f8600ffab3d1ce81925037d25746f32d.jpg');
+  background-image: url('../../images/DSC07615.JPG');
   background-size: cover;
 }
 /* .newArr .col .card {
@@ -293,27 +292,12 @@
   height: 450px;
   text-align: center;
 }
-.categorySec  {
-  width: 90%;
-  margin: 50px auto;
-  position: relative;
-  top: 70px;
-}
 @media screen and (max-width: 565px) {
-  .categorySec  {
-    width: 100%;
-  }
   .newArr .d-grid {
     grid-template-columns: repeat(2, auto);
     grid-template-rows: initial;
-    /* margin-left: -10px; */
+    margin-left: -10px;
   }
-
-  .newArr .d-grid .col,
-  .newArr .d-grid .col .card-body {
-    padding: 0;
-  }
-  .d-grid .card img {height: 150px;}
   .newArr .col:nth-child(2) {
     grid-row: auto;
     grid-column: auto;
@@ -696,7 +680,6 @@ ul {
   font-size: 1.2rem;
   border-bottom: 1px solid #ddd;
   justify-content: space-between;
-  z-index: 2;
 }
 
 .sortingFiltering select {
@@ -970,10 +953,12 @@ ul {
 
     .homeCategoryMain{
         width: auto;
-        flex-wrap: wrap;
-        /* overflow-x: scroll !important; */
+        overflow-x: scroll !important;
         column-gap: 50px;
         padding-bottom: 10px;
+    }
+    .homeCategory{
+        width: 100px;
     }
     .homeCategory img {
       height: 100px;
@@ -985,14 +970,19 @@ ul {
 }
 
 .mid-banner{
-    background: rgba(236,228,219, 0.3);
+    background: url('../../images/DSC07619.JPG');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
     height: 400px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: left;
     align-items: center;
 }
 .midText{
-    text-align: center;
+    padding: 200px;
+  text-align: center;
     float: right;
 }
 .midText h3{
@@ -1000,7 +990,7 @@ ul {
     text-transform: capitalize;
     font-style: italic;
     font-size: 5rem;
-    color: black;
+    color: rgb(167, 19, 19);
 }
 .midText button{
   border: none;
@@ -1010,11 +1000,10 @@ ul {
   text-transform: uppercase;
   font-weight: 400;
 }
-
 .midText p{
   border: none;
 
-  color: black;
+  color: #fff;
   /* padding: 0px 25px; */
   text-transform: uppercase;
   font-weight: 400;
@@ -1025,7 +1014,7 @@ ul {
   height: 400px;
 }
 .midImg img{
-  width: 600px;
+  width: 1900px;
   height: 400px;
 }
 .trendMain{
@@ -1084,8 +1073,8 @@ ul {
 }
 
 @media(max-width: 768px){
-  .mid-banner{
-    background: rgba(236,228,219, 0.3);
+  .mid-bannerr{
+    background: url('../../images/DSC07619.JPG');
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -1109,7 +1098,7 @@ ul {
   text-transform: capitalize;
   font-style: italic;
   font-size: 2rem;
-  color: black;
+  color: rgb(36, 78, 0);
 }
 .midText-p{
   text-align: center;
@@ -1144,3 +1133,52 @@ ul {
   }
 }
 
+/* ///////////////////////////////////////////////////////////////////// */
+.service_section {
+  position: relative;
+  background-color: #f8f8f8;
+}
+
+.service_section .heading_container h2 {
+  text-transform: none;
+}
+
+.service_section .box {
+  margin: 45px 0;
+  text-align: center;
+}
+
+.service_section .box .img-box {
+  height: 65px;
+}
+
+.service_section .box .img-box img {
+  height: 100%;
+  -webkit-filter: brightness(0);
+          filter: brightness(0);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.service_section .box .detail-box {
+  margin-top: 15px;
+}
+
+.service_section .box .detail-box h5 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.service_section .box .detail-box a {
+  color: #19c880;
+  font-weight: 600;
+}
+
+.service_section .box .detail-box a:hover {
+  color: #8019c8;
+}
+
+.service_section .box:hover .img-box img {
+  -webkit-filter: brightness(1);
+          filter: brightness(1);
+}

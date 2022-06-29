@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, addToWishlist, getProductDetailsById } from "../../actions";
-import Layout from "../../components/Layout";
+// import Layout from "../../components/Layout";
 import { NormalButton } from "../../components/MaterialUi";
 import { generatePublicUrl } from "../../urlConfig";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -16,6 +16,10 @@ import {
 import { BiRupee } from "react-icons/bi";
 import { AiFillShopping, AiFillThunderbolt } from "react-icons/ai";
 import "./style.css";
+import NewArrival from '../../components/NewArrival/Carousel';
+import NavBar from '../../components/NavBar';
+import { Height } from "@material-ui/icons";
+import Layout from '../../components/Layout';
 // import {addToCart} from '../../actions';
 /**
  * @author
@@ -52,7 +56,9 @@ const ProductDetailsPage = (props) => {
   const size = product.productDetails.size;
 
   return (
+    <>
     <Layout>
+    <NavBar></NavBar>
       <div className="productDescriptionContainer">
         {/* home > category > subCategory > productName */}
         <div className="breed">
@@ -62,7 +68,7 @@ const ProductDetailsPage = (props) => {
               <IoIosArrowForward />
             </li>
             <li>
-              <a href="/men">Men</a>
+              <a href="/men">{product.productDetails.category}</a>
               <IoIosArrowForward />
             </li>
             <li>
@@ -74,6 +80,7 @@ const ProductDetailsPage = (props) => {
 
         <div className="productContainer">
           <div className="flexRowPr">
+            <div className="col-md-12">
             <Carousel
               className="prnewCar"
               showArrows={true}
@@ -99,10 +106,12 @@ const ProductDetailsPage = (props) => {
               {/* <p className="legend">Legend 1</p> */}
             </Carousel>
           </div>
+          </div>
           <div className="productDetAdj">
+            <div className="col-md-12">
             {/* product description */}
             <div className="productDetails">
-              <p className="productTitle">{product.productDetails.name}</p>
+              <h3 className="productTitle" style={{"font-weight":"bold", "text-transform": "uppercase"}}>{product.productDetails.name}</h3>
               <div>
                 <span className="ratingCount">
                   4.3 <IoIosStar />
@@ -156,7 +165,7 @@ const ProductDetailsPage = (props) => {
                   </div>
                 </div>
                 <div className="pSize flex-center">
-                  <p>Size{" : "}</p>
+                  <p >Size{" : "}</p>
                   <div className="btnGroup">
                     {/* <button className="sizeBtn" id="s">S</button>
                   <button className="sizeBtn" id="m">M</button>
@@ -192,14 +201,12 @@ const ProductDetailsPage = (props) => {
                 <div className="prButtonContainer">
                   <NormalButton
                     title="ADD TO CART"
-                    bgColor="#cb8364"
+                    bgColor="darkorange"
                     textColor="#ffffff"
+                    font-weight="bolder"
+                    
                     icon={<AiFillShopping />}
-                    style={
-                      revealButton
-                        ? {}
-                        : { pointerEvents: "none", opacity: "0.6" }
-                    }
+                    style={revealButton ? {}: { pointerEvents: "none", opacity: "0.6" }}
                     onClick={() => {
                       const { _id, name, price } = product.productDetails;
                       const img = product.productDetails.productPictures[0];
@@ -222,8 +229,9 @@ const ProductDetailsPage = (props) => {
 
                   <NormalButton
                     title="Wishlist"
-                    bgColor="transparent"
-                    textColor="#cb8364"
+                    bgColor="orange"
+                    textColor="#fff"
+                    font-weight="bolder"
                     border="1px solid #cb8364"
                     icon={<AiFillThunderbolt />}
                     style={
@@ -258,10 +266,23 @@ const ProductDetailsPage = (props) => {
           </div>
         </div>
       </div>
+      </div>
       <br />
       <br />
+
+      <div className="headding-all">
+<h2>Similar Products</h2>
+</div>
+<br />
+      <br /><br />
+      <br />
+
+    <NewArrival/>
     </Layout>
+    
+    </>
   );
 };
+
 
 export default ProductDetailsPage;

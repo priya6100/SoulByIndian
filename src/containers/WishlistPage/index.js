@@ -109,7 +109,7 @@ const WishlistPage = (props) => {
 
           <div className="wishlistPriceMobile">
             <div className="wishlistPriceMobileInner">
-              <h4>
+              {/* <h4>
                 {" "}
                 <FaRupeeSign />
                 {Object.keys(wishlist.wishlistItems).reduce(
@@ -119,15 +119,15 @@ const WishlistPage = (props) => {
                   },
                   0
                 )}
-              </h4>
+              </h4> */}
 
-              <a href="#pricemobiledetails">View Details</a>
+              {/* <a href="#pricemobiledetails">View Details</a> */}
             </div>
             <div style={{ width: "150px" }}>
-              <MaterialButton
+              {/* <MaterialButton
                 title="PLACE ORDER"
                 onClick={() => props.history.push(`/checkout`)}
-              />
+              /> */}
             </div>
           </div>
           <div id="pricemobiledetails"></div>

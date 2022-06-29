@@ -27,22 +27,24 @@ const CartItem = (props) => {
   };
 
   return (
-    <div className="cartItemContainer">
+    
       <div className="flexRow-CartItem">
+        <div className="card">
+        
+        <div className="cartItemDetails">
         <div className="cartProImgContainer">
           <img src={generatePublicUrl(img)} alt={""} />
         </div>
-        <div className="cartItemDetails">
           <div>
             <h4>{name}</h4>
             <p>size: {size}</p>
             <p>color: {color}</p>
             <button className="cartActionBtn">
               {" "}
-              <FaRegSave /> save for later
+              
             </button>
             <button
-              className="cartActionBtn"
+              className="cartActionBtn" style={{"color" : "red"}}
               onClick={() => props.onRemoveCartItem(_id)}>
               <FaTrashAlt /> Remove
             </button>
@@ -58,20 +60,9 @@ const CartItem = (props) => {
             </div>
           </div>
         </div>
+        </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          margin: "5px 0",
-        }}>
-        {/* quantity control */}
-        {/* <div className="quantityControl">
-          <button onClick={onQuantityDecrement}>-</button>
-          <input value={qty} readOnly />
-          <button onClick={onQuantityIncrement}>+</button>
-        </div> */}
-      </div>
-    </div>
+
   );
 };
 

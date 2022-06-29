@@ -3,7 +3,7 @@ import './style.css';
 import '../filter/filter.css';
 import FilterSortingBar from '../filter/FilterSortingBar';
 // import Filter from '../filter/Filter';
-import SortingMobile from '../filter/SortingMobile';
+import SortingMobile from '../../components/filter/SortingMobile';
 import { Checkbox, Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 
 const Filter = () => {

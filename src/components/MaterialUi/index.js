@@ -5,7 +5,7 @@ import { IoIosClose } from "react-icons/io";
 import "./style.css";
 
 /**
- * @author Rizwan Khan
+ * @author 
  * @function
  **/
 

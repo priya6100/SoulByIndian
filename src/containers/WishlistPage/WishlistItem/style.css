@@ -27,9 +27,9 @@
     0% {opacity: 0;}
     100% {opacity: 1;}
  }
-.cartProImgContainer{
-    width: 150px;
-    height: 180px;
+/* .cartProImgContainer{
+    width: 450px;
+    height: 480px;
     overflow: hidden;
     text-align: center;
     background-color: rgba(0,0,0,.1);
@@ -45,7 +45,7 @@
     object-fit: contain;
     transition: transform .2s;
   
-}
+} */
 /* .cartProImgContainer:hover{
     width: 150px;
     height: 180px;

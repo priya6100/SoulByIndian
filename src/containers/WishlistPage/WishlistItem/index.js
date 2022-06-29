@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { generatePublicUrl } from "../../../urlConfig";
 import "./style.css";
 import { FaRupeeSign, FaTrashAlt } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 /**
  * @author
  * @function WishlistItem
@@ -13,7 +13,7 @@ import { FaRupeeSign, FaTrashAlt } from "react-icons/fa";
 const WishlistItem = (props) => {
   const [qty, setQty] = useState(props.wishlistItem.qty);
 
-  const { _id, name, price, img, size, color, slugName } = props.wishlistItem;
+  const { _id, name, slug, price, img, size, color} = props.wishlistItem;
 
   const onQuantityIncrement = () => {
     setQty(qty + 1);
@@ -29,24 +29,32 @@ const WishlistItem = (props) => {
   return (
     <div className="wishlistItemContainer">
       <div className="flexRow-WishlistItem">
-        <div className="wishlistImgContainer">
-          <img src={generatePublicUrl(img)} alt={""} />
+
+<div className="cards">
+  <div className="card"> 
+  <div className="wishlistImgContainer" style={{"height" : "250px" , "width" : "250px"}}>
+        <Link to={`/${slug}/${_id}/p`}><img src={generatePublicUrl(img)} alt={""} /></Link>
         </div>
         <div className="wishlistItemDetails">
           <div>
             <h4>{name}</h4>
             <p>size: {size}</p>
             <p>color: {color}</p>
-            <button
-              className="cartActionBtn"
-              onClick={() => props.onRemovewishlistItem(_id)}>
-              <FaTrashAlt /> Remove
-            </button>
+           
             <span className="wishlistPrice">
               <FaRupeeSign /> {price}
             </span>
           </div>
         </div>
+        <button
+              className="cartActionBtn" style={{"color" : "red"}}
+              onClick={() => props.onRemovewishlistItem(_id)}>
+              <FaTrashAlt /> Remove
+            </button>
+  </div>
+</div>
+
+      
       </div>
       <div
         style={{

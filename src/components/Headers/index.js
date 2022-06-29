@@ -165,7 +165,7 @@ const Header = (props) => {
         ]}
         firstMenu={
           <div className="firstmenu">
-            <span>New Customer?</span>
+            {/* <span>New Customer?</span> */}
             <a
               onClick={() => {
                 setLoginModal(true);

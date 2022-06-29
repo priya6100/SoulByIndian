@@ -1,12 +1,14 @@
 /** @format */
-
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { getAllCategory, getProducts } from '../../actions';
+// import React, { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import { getProductsBySlug, getAllProduct } from "../../../actions";
 import Card from "../../../components/UI/Card";
 import { BiRupee } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { Carousel, Container, Row, Col } from "react-bootstrap";
+import { Carousel, Container, Row, Col, Pagination } from "react-bootstrap";
 import banner1 from "../../../images/logo/banner-3.jpg";
 import banner2 from "../../../images/logo/women-banner.jpg";
 import banner3 from "../../../images/kidBanner.jpeg";
@@ -23,8 +25,16 @@ import Filter from "../../../components/filter/Filter";
 import FilterSortingBar from "../../../components/filter/FilterSortingBar";
 import FilterComp from "../../../components/filter/FilterComp";
 import FilterBar from "../../../components/filter/FilterBar";
-import { FiFilter } from 'react-icons/fi'
+import FilterMobileUi from "../../../components/filter/FilterMobileUi";
+import useStateDimensions from "../../../components/utility/useWindowDimensions";
+
 import "./style.css";
+
+import SortingMobile from '../../../components/filter/SortingMobile';
+
+
+// import Pagination from '../pagination/Pagination';
+import NewArrivalCarousel from './Carousel';
 
 /**
  * @author
@@ -33,6 +43,7 @@ import "./style.css";
 
 const ClothingAndAccessories = (props) => {
   const product = useSelector((state) => state.product);
+  const { width, height } = useStateDimensions();
 
   const dispatch = useDispatch();
 
@@ -53,55 +64,17 @@ const ClothingAndAccessories = (props) => {
   if (!filterRevealState) {
     filterReveal = "none";
   }
-  
-  const viewSorting = [
-    "What's New",
-    "Popularity",
-    "Better Discount",
-    "Price: High to Low",
-    "Price: Low to High",
-    "Customer Rating",
-  ];
-  const [stateSort, setSort] = useState("recommended");
-
-  function showSortingList(value) {
-    const sortingList = document.querySelector("#sortByList");
-    value
-      ? sortingList.classList.add("active")
-      : sortingList.classList.remove("active");
-  }
 
   return (
     <>
-      <Carousel className="carousel slide carousel-inner">
+      {/* <Carousel className="carousel slide carousel-inner">
         <Carousel.Item>
           <img className="d-block w-100" src={banner3} alt="First slide" />
         </Carousel.Item>
         <Carousel.Item>
           <img className="d-block w-100" src={banner3} alt="Second slide" />
         </Carousel.Item>
-      </Carousel>
-      {/* <div className="undefinedFlex1">
-   
-        {product.products.map((product) => (
-          <div className="caContainer">
-            <Link
-              className="caImgContainer"
-              to={`/${product.slug}/${product._id}/p`}
-            >
-              <img src={generatePublicUrl(product.productPictures[0])} />
-            </Link>
-            <div>
-              <div className="caProductName">{product.name}</div>
-              <div className="caProductPrice">
-                <BiRupee />
-                {product.price}
-              </div>
-            </div>
-          </div>
-        ))}
-    
-    </div> */}
+      </Carousel> */}
 
       <br />
 
@@ -109,53 +82,53 @@ const ClothingAndAccessories = (props) => {
         setFilterReveal={setFilterReveal}
         filterRevealState={filterRevealState}
       />
-      <div className="ProductsContainer">
-        <div style={{ zIndex: '1'}}>
-          <div className="filterSection">
-            <label 
-              htmlFor="toggleSortByBtn" 
-              className="sortFilterBtnLbl"
-              onMouseEnter={() => showSortingList(1)}        
-              onMouseLeave={() => showSortingList(0)}
-              id="viewSorting"
-            >
-              Sort By &nbsp; <FiFilter style={{display: 'inline'}} /> 
-            </label>
-            <input type="checkbox" id="toggleSortByBtn" name="sorting" style={{display: 'none'}} />
-            
-            <div className="sortByPanel">
-              <ul>
-                {viewSorting.map((e, index) => {
-                  return (
-                    <li
-                      onClick={() => {
-                        showSortingList(0);
-                        setSort(e.charAt(0) + e.slice(1));
-                      }}
-                      key={index}>
-                      {e}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <label htmlFor="toggleFilterBtn" className="sortFilterBtnLbl">Filter &nbsp; <FiFilter style={{display: 'inline'}} /> </label>
-            <input type="checkbox" id="toggleFilterBtn" name="sorting" />
-            <div className="filterPanel">
-              <FilterBar
-                filter={filter}
-                filterState={filterState}
-                setFilter={setFilter}
-              />
-              <Filter
-                products={product}
-                filter={filter}
-                filterState={filterState}
-                setFilter={setFilter}
-              />
-            </div>
-            <div className="productSection">
-              <div className="undefinedFlex1 kidhidden">
+      <div className="ProductsContainer relative">
+        {width < 800 && (
+          <>
+            <FilterMobileUi
+              products={product}
+              filter={filter}
+              filterState={filterState}
+              setFilter={setFilter}
+            />
+          </>
+        )}
+        <div className="overflow-hidden relative">
+          <div
+            className={
+              width < 800
+                ? "filterSection relative flex-column"
+                : "filterSection relative"
+            }>
+            {width > 800 && (
+              <div style={{ display: "flex", width: "40%" }}>
+                <FilterBar
+                  filter={filter}
+                  filterState={filterState}
+                  setFilter={setFilter}
+                />
+                <Filter
+                  products={product}
+                  filter={filter}
+                  filterState={filterState}
+                  setFilter={setFilter}
+                />
+              </div>
+            )}
+            <div
+              className={
+                width > 800
+                  ? "productSection my-0"
+                  : "productSection my-0 w-full"
+              }>
+              <div
+                className={
+                  width > 800
+                    ? "undefinedFlex1 overflow-y-auto"
+                    : width > 600
+                    ? "undefinedFlex1 overflow-y-auto grid gap-3 grid-cols-3 justify-items-center items-center"
+                    : "undefinedFlex1 overflow-y-auto grid gap-3 grid-cols-2 justify-items-center items-center"
+                }>
                 <FilterComp product={product} />
               </div>
             </div>
@@ -164,41 +137,20 @@ const ClothingAndAccessories = (props) => {
 
         {/* <SortingMobile /> */}
       </div>
+      {/* <div className="headding-all">
+<h2>New <span style={{"color" : "coral"}}>Arrivals</span></h2>
+<br/><br/>
+<NewArrivalCarousel />
+</div><br/><br/> */}
+<footer/>
 
-      {/* <section className="undefinedMidBanner">
- 
-<div className="kid-mid-banner">
-<div className="kidMidImg">
-            <img src={midBanner} alt="" />
-           </div>
-          <div className="kidMidText">
-             <h5>Keep your lil ones safe</h5>
-             <p className="kidMidText-p">Kids Masks</p>
-             <h3>Upto <span style={{color:'#466886'}}>30%</span>  off</h3>
-             <button>Shop Now</button>
-          </div>
-         
-        </div> */}
-      {/* <div className="ml-po">
-          <div className="ml-sub-main">
-          <div className="ml-sub">
-          <img src={item1} alt="" />
-          <h5>Starting at 458</h5>
-          </div>
-          <div className="ml-sub">
-          <img src={item1} alt="" />
-          <h5>Starting at 358</h5>
-          </div>
-          <div className="ml-sub">
-          <img src={item1} alt="" />
-          <h5>Starting at 258</h5>
-          </div>
-          </div>
-        </div>
-      */}
-      {/* </section> */}
+  
 
-      <section>
+     {/* <Pagination /> */} 
+
+
+
+      {/* <section>
         <Container>
           <div className="kid-last-container">
             <div className="upperFlex">
@@ -238,30 +190,6 @@ const ClothingAndAccessories = (props) => {
             </div>
           </div>
         </Container>
-      </section>
-      {/* <section>
-      <div className="card">
-      <div className="undefinedFlex1">
-   
-   {product.products.map((product) => (
-     <div className="caContainer">
-       <Link
-         className="caImgContainer"
-         to={`/${product.slug}/${product._id}/p`}
-       >
-         <img src={generatePublicUrl(product.productPictures[0])} />
-       </Link>
-       <div>
-         <div className="caProductName">{product.name}</div>
-         <div className="caProductPrice">
-           <BiRupee />
-           {product.price}
-         </div>
-       </div>
-     </div>
-   ))}
-</div>
-      </div>
       </section> */}
     </>
   );

@@ -1,11 +1,12 @@
 /** @format */
-
+import { cartConstants, userConstants } from "../../actions/constants";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrder, getAddress, getCartItems } from "../../actions";
+import { addOrder, getAddress, removeAddressList, getCartItems } from "../../actions";
 import Layout from "../../components/Layout";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
+
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
@@ -22,10 +23,10 @@ import CartPage from "../CartPage";
 import Razorpay from "razorpay";
 import axios from "axios";
 import AddressForm from "./AddressForm";
-import { FaRubleSign, FaRupeeSign } from "react-icons/fa";
+import { FaRubleSign, FaRupeeSign ,FaTrashAlt } from "react-icons/fa";
 import "./style.css";
 import CardPayment from "./PaymentRazorpay";
-
+import Captcha from "../../containers/CaptchaPage";
 /**
  * @author
  * @function CheckOutPage
@@ -44,6 +45,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const CheckoutStep = (props) => {
+
+
+  
+
+
+
+
+
   return (
     <div className="checkoutStep">
       <div
@@ -64,6 +73,7 @@ const Address = ({
   adr,
   selectAddress,
   enableAddressEditForm,
+  onRemoveAddressList,
   confirmDeliveryAddress,
   onAddressSubmit,
 }) => {
@@ -72,6 +82,7 @@ const Address = ({
       <div>
         <input name="address" onClick={() => selectAddress(adr)} type="radio" />
       </div>
+
       <div className="flexRow sb addressinfo">
         {!adr.edit ? (
           <div style={{ width: "100%" }}>
@@ -81,6 +92,7 @@ const Address = ({
                 <span className="addressType">{adr.addressType}</span>
                 <span className="addressMobileNumber">{adr.mobileNumber}</span>
               </div>
+           
               {adr.selected && (
                 <Anchor
                   name="EDIT"
@@ -89,8 +101,22 @@ const Address = ({
                     fontWeight: "500",
                     color: "#cb8364",
                   }}
+                  
                 />
               )}
+
+<br/>
+{adr.selected && (
+                <Anchor
+                  name="Remove"
+                  onClick={() => onRemoveAddressList(adr)}
+                  style={{
+                    fontWeight: "500",
+                    color: "#cb1114",
+                  }}
+                  
+                />
+              )} 
             </div>
             <div className="fullAddress">
               {adr.address} <br /> {`${adr.state} - ${adr.pinCode}`}
@@ -103,6 +129,38 @@ const Address = ({
                 style={{ width: "250px", margin: "10px 0px" }}
               />
             )}
+          </div>
+        ) : (
+          <AddressForm
+            onRemoveAddressList={onRemoveAddressList}
+            witoutLayout={true}
+            onSubmitForm={onAddressSubmit}
+            initialData={adr}
+            onCancle={() => {}}
+          />
+        )}
+
+
+
+
+
+
+
+{!adr.remove ? (
+          <div style={{ width: "100%" }}>
+            <div className="addressDetails">
+            {adr.selected && (
+                <Anchor
+                  name="Remove"
+                  onClick={() => onRemoveAddressList(adr)}
+                  style={{
+                    fontWeight: "500",
+                    color: "#cb1114",
+                  }}
+                  
+                />
+              )} 
+            </div>
           </div>
         ) : (
           <AddressForm
@@ -127,6 +185,7 @@ const CheckOutPage = (props) => {
     return state.user.lastOrderDetails;
   });
   const [newAddress, setNewAddres] = useState(false);
+
   const [address, setAddress] = useState([]);
   const [confirmAddress, setConfirmAddress] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -149,7 +208,7 @@ const CheckOutPage = (props) => {
     console.log(orderDetails, ">>>odddd");
   });
 
-  function getSteps() {
+  function getSteps(props) {
     return ["Delivery Address", "Order Summery", "Payment Oprtion"];
   }
 
@@ -213,8 +272,17 @@ const CheckOutPage = (props) => {
         : { ...adr, selected: false }
     );
     setAddress(updatedAddress);
-  };
 
+  };
+  // const removeAddress = (addr) => {
+  //   console.log(addr);
+  //   const removeAddress = address.map((adr) =>
+  //     adr._id === addr._id
+  //       ? { ...adr, selected: true }
+  //       : { ...adr, selected: false }
+  //   );
+  //   setAddress(removeAddress);
+  // };
   const confirmDeliveryAddress = (addr) => {
     setSelectedAddress(addr);
     console.log(setSelectedAddress(addr), "hyjsdhfjs");
@@ -229,6 +297,22 @@ const CheckOutPage = (props) => {
     );
     setAddress(updatedAddress);
   };
+  
+const onRemoveAddressList = (addr) => {
+  dispatch(removeAddressList({ address : addr._id }));
+};
+
+  ////////////////////////////////////////////////////////////////////////
+  
+  
+  // const onRemoveAddressList = (addr) => {                            //removeAddress
+  //   const removeAddress = address.map((adr) =>
+  //   adr._id === addr._id ? { ...adr, edit: true } : { ...adr, edit: false }
+  // );
+  // setAddress(removeAddress);
+  // };
+
+
 
   const userOrderConfirmation = () => {
     setOrderConfirmation(true);
@@ -368,6 +452,7 @@ const CheckOutPage = (props) => {
             <div className="confirmText">
               <h4>Thanks you for shopping with us, your order is complete!</h4>
               <p>orderId: {orderDetails._id}</p>
+              <p>pinCode: {orderDetails.pinCode}</p>
             </div>
             <div className="confirmButtonContainer">
               <a href="/account/orders">View / Manage Order</a>
@@ -426,7 +511,7 @@ const CheckOutPage = (props) => {
           </div>
         </div>
       ) : null}
-
+<br /><br /><br />
       <div className="cartContainer" style={{ alignItems: "flex-start" }}>
         <div className="checkoutContainer">
           {/* check if user logged in or not */}
@@ -466,6 +551,7 @@ const CheckOutPage = (props) => {
                 ) : (
                   address.map((adr) => (
                     <Address
+                    onRemoveAddressList={onRemoveAddressList}
                       selectAddress={selectAddress}
                       enableAddressEditForm={enableAddressEditForm}
                       confirmDeliveryAddress={confirmDeliveryAddress}
@@ -549,6 +635,10 @@ const CheckOutPage = (props) => {
                   <MaterialButton
                     title="Cash on delivery"
                     onClick={onConfirmOrder}
+                    // onClick={() => {
+              
+                    //   props.history.push(`/Captcha`);
+                    // }}
                     style={{
                       width: "200px",
                       margin: "0 0 20px 20px",

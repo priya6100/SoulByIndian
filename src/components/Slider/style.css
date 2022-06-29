@@ -3,18 +3,148 @@
 .slide-smooth {
   transition: all ease-in-out 1s !important;
 }
-.sliderItem img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+.cards{
+ 
+  display: "flex";
+  align-items: "center";
+  justify-content: "center";
+  height: "100%";
+  background-color:"skyblue";
+
 }
-.react-multi-carousel-dot-list {
-  z-index: 2;
+.card {
+  overflow: hidden;
+  /* box-shadow: 0 2px 20px $clr-gray300;
+  border-radius: $radius; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+  background-color: #f2f2f2;
+  height: 90%;
+  width: 90%;
+}
+.card__btn{
+  padding: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 1rem;
+  border: 2px solid ;
+  background: transparent;
+  
+ 
+  transition: background 200ms ease-in, color 200ms ease-in;
+}
+.card img{
+  /* padding: 10px; */
+  height: 300px;
+  width: 300px;
+  /* object-fit: cover; */
+  /* align-items: center; */
+}
+.card__btn {
+  background-color: rgb(74, 161, 19);
+  color: #fff;
+  border-radius: 10%;
+}
+.card__btn:hover{
+  background-color: crimson;
+  color: #fff;
 }
 
-@media screen and (max-width: 765px) {
-  .sliderItem img {
-    width: 100px;
-    height: 100px;
+
+@media screen and (min-width: 320px) {
+  .card {
+    overflow: hidden;
+    /* box-shadow: 0 2px 20px $clr-gray300;
+    border-radius: $radius; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 200ms ease-in;
+    background-color: #f2f2f2;
+    height: 100%;
+    width: 100%;
   }
-}
+  .card__btn{
+    padding: 1rem;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 1rem;
+    border: 2px solid ;
+    background: transparent;
+    
+   
+    transition: background 200ms ease-in, color 200ms ease-in;
+  }
+  .card img{
+    /* padding: 10px; */
+    height: 300px;
+    width: 300px;
+    /* object-fit: cover; */
+    /* align-items: center; */
+  }
+  
+  
+  }
+  .row h3 {
+    font-weight: 500;
+    font-family: fantasy;
+  }
+  .row p {
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+  @media screen and (min-width: 768px) {
+  
+    .card {
+      overflow: hidden;
+      /* box-shadow: 0 2px 20px $clr-gray300;
+      border-radius: $radius; */
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: transform 200ms ease-in;
+      background-color: #f2f2f2;
+      height: 100%;
+      width: 100%;
+    }
+    .card__btn{
+      padding: 1rem;
+      font-family: inherit;
+      font-weight: bold;
+      font-size: 1rem;
+      margin: 1rem;
+      border: 2px solid ;
+      background: transparent;
+      
+     
+      transition: background 200ms ease-in, color 200ms ease-in;
+    }
+    .card img{
+      /* padding: 10px; */
+      height: 300px;
+      width: 300px;
+      /* object-fit: cover; */
+      /* align-items: center; */
+    }
+    .card__btn {
+      background-color: rgb(74, 161, 19);
+      color: #fff;
+      border-radius: 10%;
+    }
+    .card__btn:hover{
+      background-color: crimson;
+      color: #fff;
+    }
+    
+    }

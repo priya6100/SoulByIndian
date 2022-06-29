@@ -86,8 +86,6 @@ const CartPage = (props) => {
       <div className="cartContainer">
         <Card
           headerLeft={`My Cart`}
-
-          // headerRight={<div>Deliver to</div>}
         >
           {Object.keys(cartItems).map((key, index) => (
             <CartItem

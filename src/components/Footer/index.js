@@ -9,21 +9,21 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer = (props) => {
     return(
-        <div className="main-footer">
-            <div className="instaBtn">
-                <button><Instagram className="instaIcon" /> <span>shop from instagram</span> </button>
-            </div>
-             <div className="subscription">
-                <form action="" className="newsletter col-12">
-                    <h2>Subscribe Our Newsletter &amp; Join US</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    <div className="newsletter-box">
-                        <span className="mailIcon"><Mail /></span>
-                        <input className="emailbox" type="email" placeholder="Enter your email id" />
-                        <button type="button" name="button">Subscribe</button>
-                    </div>
-                </form>
-            </div>
+        // <div className="main-footer">
+        //     <div className="instaBtn">
+        //         <button><Instagram className="instaIcon" /> <span>shop from instagram</span> </button>
+        //     </div>
+        //      <div className="subscription">
+        //         <form action="" className="newsletter col-12">
+        //             <h2>Subscribe Our Newsletter &amp; Join US</h2>
+        //             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        //             <div className="newsletter-box">
+        //                 <span className="mailIcon"><Mail /></span>
+        //                 <input className="emailbox" type="email" placeholder="Enter your email id" />
+        //                 <button type="button" name="button">Subscribe</button>
+        //             </div>
+        //         </form>
+        //     </div>
              
     
            <div className="footer-container">
@@ -147,7 +147,7 @@ const Footer = (props) => {
 
             
     
-        </div>
+        // </div>
     )
  }
 

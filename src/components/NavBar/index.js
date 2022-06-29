@@ -37,15 +37,16 @@ import {
   signout,
   signup as _signup,
 } from "../../actions";
+import { red } from "@material-ui/core/colors";
+import { generatePublicUrl } from "../../urlConfig";
 // import MenuHeader from "../MenuHeader";
 // import Cart from "../UI/Cart";
 
 // import { BiUserCircle } from "react-icons/bi";
-import Data from "./myData.json";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1,
+    flexGrow: 0.6,
     backgroundColor: "white",
   },
   menuButton: {
@@ -57,26 +58,27 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
-  search: {
-    position: "relative",
-    borderRadius: "5px",
-    backgroundColor: "#f5f5f6",
-    borderRadius: "5px",
-    border: "1px solid #f5f5f6",
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(4),
-      width: "500px",
-    },
-  },
+  // search: {
+  //   position: "relative",
+  //   borderRadius: "5px",
+  //   backgroundColor: "#f5f5f6",
+  //   paddingLeft: "60px",
+  //   borderRadius: "5px",
+  //   border: "3px solid #f5f5f6",
+  //   "&:hover": {
+  //     backgroundColor: alpha(theme.palette.common.white, 0.25),
+  //   },
+  //   marginRight: theme.spacing(2),
+  //   marginLeft: 0,
+  //   width: "100px",
+  //   [theme.breakpoints.up("sm")]: {
+  //     marginLeft: theme.spacing(4),
+  //     width: "500px",
+  //   },
+  // },
   searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
+    padding: theme.spacing(0, 19),
+    height: "90%",
     position: "absolute",
     pointerEvents: "none",
     display: "flex",
@@ -87,22 +89,27 @@ const useStyles = makeStyles((theme) => ({
     color: "inherit",
   },
   inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
+    // padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    // paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
-    width: "100%",
+    width: "50%",
     [theme.breakpoints.up("md")]: {
       width: "20ch",
     },
   },
-  sectionDesktop: {
+  search: {
+    borderRadius: "8px",
     display: "none",
+    border:"2px solid #696e79",
+    marginLeft: "520px",
     [theme.breakpoints.up("md")]: {
       display: "flex",
       color: "#696e79",
+      color:"crimson",
     },
   },
+ 
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
@@ -129,6 +136,7 @@ export default function PrimarySearchAppBar(props) {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const auth = useSelector((state) => state.auth);
   const wish = useSelector((state) => state.wishlist);
+  const product = useSelector((state) => state.product);
 
   const userSignup = () => {
     const user = { firstName, lastName, email, password };
@@ -242,19 +250,12 @@ export default function PrimarySearchAppBar(props) {
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}>
-      <div className="loggiedinProfile">
+      <div className="loggiedinProfile" style={{"height":"10px","width":"10px"}}>
         <h5>Hello</h5>
         <p>{auth.user.fullName} </p>
         <p>{auth.user.email} </p>
       </div>
       <hr />
-
-      {/* <MenuItem onClick={handleMenuClose}><Link to="/dressdetail" >Dress Details</Link> </MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link  to="/kids">Kids</Link> </MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link  to="/men">Men Fashion</Link> </MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link  to="/women">Women Fashion</Link> </MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link  to="/accessories">Accesories</Link> </MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link  to="/portfolio">Portfolio</Link> </MenuItem> */}
 
       <ul className="mobileViewMenu">
         {category.categories.length > 0
@@ -308,23 +309,23 @@ export default function PrimarySearchAppBar(props) {
       </div>
       <hr />
       <MenuItem onClick={handleMenuClose}>
-        New Customer ?{" "}
+        {/* New Customer ?{" "} */}
         <span>
-          <a
+          <p
             onClick={() => {
               setLoginModal(true);
               setSignup(true);
               setAnchorEl(false);
             }}>
-            signup
-          </a>
+            New Customer ? Signup
+          </p>
         </span>
       </MenuItem>
       <ul className="mobileViewMenu">
         {category.categories.length > 0
           ? MobileRenderCategories(category.categories)
           : null}
-        <li style={{ lineHeight: "48px" }}>Portfolio</li>
+        {/* <li style={{ lineHeight: "48px" }}>Portfolio</li> */}
       </ul>
     </Menu>
   );
@@ -345,7 +346,7 @@ export default function PrimarySearchAppBar(props) {
             <FavoriteBorderOutlined />
           </Badge>
         </IconButton>
-        <p>Profile</p>
+        {/* <p>Profile</p> */}
       </MenuItem>
       <MenuItem>
         <p>Add To Cart</p>
@@ -365,6 +366,8 @@ export default function PrimarySearchAppBar(props) {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [searchReveal, setSearchReveal] = useState(true);
+
   return (
     <div className={classes.grow}>
       <AppBar
@@ -383,12 +386,12 @@ export default function PrimarySearchAppBar(props) {
           </div>
 
           <div className="logosection">
-            <span style={{ width: "40px", height: "40px" }}>
+            <span style={{ width: "60px", height: "60px" }}>
               <Link exact to="/" className="">
                 <img src={logo} alt="" />
               </Link>
             </span>
-            {/* <p>Soul by Indian</p> */}
+            <p></p>
           </div>
 
           <div className="renderCat">
@@ -397,11 +400,24 @@ export default function PrimarySearchAppBar(props) {
                 {category.categories.length > 0
                   ? renderCategories(category.categories)
                   : null}
-                <li style={{ lineHeight: "48px" }}>Portfolio</li>
+                {/* <li style={{ lineHeight: "48px" }}>Portfolio</li> */}
               </ul>
             </div>
           </div>
 
+
+
+
+
+
+
+
+
+
+
+{/* //////////////////////////////////////////////////////////////////////////// */}
+
+<>
           <div className={classes.sectionDesktop}>
             <div className={classes.search} style={{ position: "relative" }}>
               {/* <div className="mx-3"> */}
@@ -417,49 +433,135 @@ export default function PrimarySearchAppBar(props) {
                 }}
                 inputProps={{ "aria-label": "search" }}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                onFocus={() => {
+                  setSearchReveal(true);
+                }}
+                onBlur={() => {
+                  setSearchReveal(true);
+                }}
               />
-              <div
-                style={{
-                  position: "absolute",
-                  top: "90%",
-                  left: "0",
-                  width: "100%",
-                  backgroundColor: "#fff",
-                  // zIndex: '-1'
-                }}>
-                <ul style={{ margin: "0", padding: "0", listStyle: "none" }}>
-                  {Data.product
-                    .filter((val) => {
-                      if (searchTerm === "") {
-                        return null;
-                      } else if (
-                        val.Name.toLowerCase().includes(
-                          searchTerm.toLowerCase()
-                        )
-                      ) {
-                        return val.Name;
-                      }
-                    })
-                    .map((item) => (
-                      <li key={item.id}>
-                        <a
-                          href="/"
-                          style={{ color: "inherit", textDecoration: "none" }}>
-                          {item.Name}
-                        </a>
-                      </li>
-                    ))}
-                </ul>
-              </div>
+              {searchReveal && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "90%",
+                    left: "10px",
+                    width: "100%",
+                    backgroundColor: "#f1f2f6",
+                    display: {},
+                  }}>
+                  <ul style={{ margin: "0", padding: "0", listStyle: "none" }}>
+                    {product.products
+                      .filter((val) => {
+                        if (searchTerm === "") {
+                          return null;
+                        } else if (
+                          val.name
+                            .toLowerCase()
+                            .includes(searchTerm.toLowerCase())
+                        ) {
+                          return val.name;
+                        }
+                      })
+                      .map((e) => (
+                        <li key={e.id} className="hover:bg-gray-200"
+                          ><a
+                            className="pl-3 py-1"
+                            href={`/${e.slug}/${e._id}/p`}
+                            style={{
+                              color: "inherit",
+                              textDecoration: "none",
+                            }}>
+                            {e.name}
+                          </a>
+                          <div>
+                            {/* <Link className="caImgContainer" 
+                            to = {`/${img1.slug}/${img1._id}/p`}>
+                              {img1.name}
+                              </Link> */}
+                        </div>
+                        </li>
+                      ))}
+                  </ul>
+
+
+                </div>
+              )}
             </div>
           </div>
-
+</>
           <div className={classes.grow} />
 
-          <div className={classes.sectionMobile}>
-            <IconButton color="inherit">
-              <SearchIcon />
-            </IconButton>
+          <div className={classes.sectionMobile} style={{border: "2px solid crimson",}}>
+          
+              {/* <div className={classes.searchIcon}> */}
+                <SearchIcon />
+              {/* </div> */}
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onFocus={() => {
+                  setSearchReveal(true);
+                }}
+                onBlur={() => {
+                  setSearchReveal(true);
+                }}
+              />
+              {searchReveal && (
+                <div
+                  style={{
+                  
+                    position: "absolute",
+                    top: "90%",
+                    left: "10px",
+                    width: "100%",
+                    backgroundColor: "#f1f2f6",
+                    display: {},
+                  }}>
+                  <ul style={{ margin: "0", padding: "0", listStyle: "none" }}>
+                    {product.products
+                      .filter((val) => {
+                        if (searchTerm === "") {
+                          return null;
+                        } else if (
+                          val.name
+                            .toLowerCase()
+                            .includes(searchTerm.toLowerCase())
+                        ) {
+                          return val.name;
+                        }
+                      })
+                      .map((e) => (
+                        <li key={e.id} className="hover:bg-gray-200"
+                          ><a
+                            className="pl-3 py-1"
+                            href={`/${e.slug}/${e._id}/p`}
+                            style={{
+                              color: "inherit",
+                              textDecoration: "none",
+                            }}>
+                            {e.name}
+                          </a>
+                          <div>
+                            {/* <Link className="caImgContainer" 
+                            to = {`/${img1.slug}/${img1._id}/p`}>
+                              {img1.name}
+                              </Link> */}
+                        </div>
+                        </li>
+                      ))}
+                  </ul>
+
+
+                </div>
+              )}
+            {/* </div> */}
           </div>
           <div className="mx-2">
             <div className={classes.sectionDesktop}>
@@ -501,11 +603,10 @@ export default function PrimarySearchAppBar(props) {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderNonLoggedMenu}
       {auth.authenticate ? renderLoggedMenu : renderNonLoggedMenu}
       <Modal visible={loginModal} onClose={() => setLoginModal(false)}>
         <div className="authContainer">
-          <div className="row">
+          <div className="row" style={{"backgroundColor":"#cb8364"}}>
             <div className="leftspace">
               <h2>Login</h2>
               <p>Get access to your Orders, Wishlist and Recommendations</p>
@@ -519,23 +620,23 @@ export default function PrimarySearchAppBar(props) {
               <h1>Welcome to Soulbyindian</h1>
               <div className="loginInputContainer">
                 {auth.error && (
-                  <div style={{ color: "red", fontSize: 12 }}>{auth.error}</div>
+                  <div style={{ color: "red", fontSize: 18 }}>{auth.error}</div>
                 )}
                 {signup && (
-                  <MaterialInput
-                    type="text"
-                    label="First Name"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                )}
-                {signup && (
-                  <MaterialInput
-                    type="text"
-                    label="Last Name"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
+                  <>
+                    <MaterialInput
+                      type="text"
+                      label="First Name"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                    <MaterialInput
+                      type="text"
+                      label="Last Name"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  </>
                 )}
 
                 <MaterialInput
@@ -575,32 +676,25 @@ export default function PrimarySearchAppBar(props) {
                     }
                   />
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    margin: "1rem 0 0 0",
-                  }}>
-                  <a
+                {!signup && (
+                  <div
                     style={{
-                      fontSize: ".8rem",
-                      fontWeight: "700",
-                      letterSpacing: "1px",
-                      color: "#cb8364",
-                    }}
-                    href="/forgot-password">
-                    Forgot password?
-                  </a>
-                </div>
-
-                {/* 
-                                      <GoogleLogin
-                        clientId="800480683042-qdqo4a9hi5dboglr97e4tvmvab0er1lu.apps.googleusercontent.com"
-                        buttonText="Login"
-                        onSuccess={responseGoogle}
-                        onFailure={responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                      />, */}
+                      display: "flex",
+                      justifyContent: "center",
+                      margin: "1rem 0 0 0",
+                    }}>
+                    <a
+                      style={{
+                        fontSize: ".8rem",
+                        fontWeight: "700",
+                        letterSpacing: "1px",
+                        color: "#cb8364",
+                      }}
+                      href="/forgot-password">
+                      Forgot password?
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </div>

@@ -198,7 +198,7 @@ img {
     }
 
     .card {
-        width: 31%;
+        width: 100%;
         margin: 15px 0;
     }
     .cartContainer .card{ width: calc(100% - 20px);}
@@ -242,6 +242,6 @@ img {
 
 @media screen and (min-width: 992px) {
     .card {
-        width: 22%;
+        width: 100%;
     }
 }
